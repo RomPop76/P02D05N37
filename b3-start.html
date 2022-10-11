@@ -10,11 +10,51 @@
     <style>
         button {
             display: block;
+            position: relative;
             margin: 100px auto;
             font-size: 40px;
             padding: 10px 30px;
-            background-color: #fff;
+            background-color: transparent;
             border: 3px solid black;
+            overflow: hidden;
+            transition: .25s .05s linear;
+        }
+
+        button::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -100%;
+            width: 100%;
+            height: 6px;
+            background-color: brown;
+            transition: .2s linear;
+            z-index: -1;
+        }
+
+        button::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: brown;
+            transition: .2s .2s linear;
+            z-index: -1;
+        }
+
+        button:hover::before {
+            right: 0;
+        }
+
+        button:hover::after {
+            top: 0;
+            height: 100%;
+        }
+
+        button:hover {
+            color: white;
         }
     </style>
 </head>
